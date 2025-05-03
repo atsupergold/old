@@ -2002,33 +2002,39 @@ function resetToDefault() {
     verifyMessage.textContent = '';
 }
 
+// Input field typing handler
+verifyInput.addEventListener('input', () => {
+    // Reset the timer on every keystroke
+    if (resetTimer) clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => {
+        if (redBeatsLink.classList.contains('locked')) {
+            resetToDefault();
+        }
+    }, 5000);
+});
+
 // Click handler for RED Beats link
 redBeatsLink.addEventListener('click', function(e) {
     if (this.classList.contains('locked') && 
        !e.target.classList.contains('verify-input') && 
        !e.target.classList.contains('verify-button')) {
         
-        // Clear existing timer
         if (resetTimer) clearTimeout(resetTimer);
-        
-        // Show verification UI
         lockedContent.style.display = 'none';
         this.querySelector('.verify-section').style.display = 'block';
         verifyInput.focus();
         
-        // Start 3-second reset timer
         resetTimer = setTimeout(() => {
             if (this.classList.contains('locked')) {
                 resetToDefault();
             }
-        }, 3000);
+        }, 10000);
     }
 });
 
 // Verification function
 function verifyRedBeats() {
-    // Clear existing timer
-    clearTimeout(resetTimer);
+    clearTimeout(resetTimer); // Clear any pending reset
     
     if (verifyInput.value.trim().toUpperCase() === 'RED') {
         verifyMessage.textContent = '✓ Verified! Redirecting...';
@@ -2041,7 +2047,10 @@ function verifyRedBeats() {
         lockedContent.style.display = 'block';
         redBeatsLink.querySelector('.verify-section').style.display = 'none';
         
-        // Redirect
+        // Remove locked class and timer
+        redBeatsLink.classList.remove('locked');
+        clearTimeout(resetTimer);
+        
         setTimeout(() => {
             window.open('https://supersez.github.io/Ted/', '_blank', 'noopener,noreferrer');
         }, 2000);
@@ -2050,10 +2059,12 @@ function verifyRedBeats() {
         verifyInput.value = '';
         verifyInput.focus();
         
-        // Restart 3-second timer
-        resetTimer = setTimeout(() => {
-            resetToDefault();
-        }, 3000);
+        // Restart timer only if still locked
+        if (redBeatsLink.classList.contains('locked')) {
+            resetTimer = setTimeout(() => {
+                resetToDefault();
+            }, 5000);
+        }
     }
 }
 
@@ -2062,6 +2073,7 @@ verifyButton.addEventListener('click', verifyRedBeats);
 verifyInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') verifyRedBeats();
 });
+
 
 // இசை Link (direct access - unchanged)
 document.querySelector('.link-item[data-url="https://atsuperman.github.io/isai/"]').addEventListener('click', function(e) {
@@ -2148,4 +2160,4 @@ document.addEventListener('click', function(e) {
     
     </script>
 </body>
-           </html>
+           </html> 
