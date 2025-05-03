@@ -1,4 +1,4 @@
-                
+                 
    <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1992,6 +1992,15 @@ const verifyInput = redBeatsLink.querySelector('.verify-input');
 const verifyButton = redBeatsLink.querySelector('.verify-button');
 const verifyMessage = redBeatsLink.querySelector('.verify-message');
 const lockedContent = redBeatsLink.querySelector('.locked-content');
+let resetTimer = null;
+
+// Reset to default state
+function resetToDefault() {
+    lockedContent.style.display = 'block';
+    redBeatsLink.querySelector('.verify-section').style.display = 'none';
+    verifyInput.value = '';
+    verifyMessage.textContent = '';
+}
 
 // Click handler for RED Beats link
 redBeatsLink.addEventListener('click', function(e) {
@@ -1999,37 +2008,52 @@ redBeatsLink.addEventListener('click', function(e) {
        !e.target.classList.contains('verify-input') && 
        !e.target.classList.contains('verify-button')) {
         
-        // Hide the locked text but maintain space
+        // Clear existing timer
+        if (resetTimer) clearTimeout(resetTimer);
+        
+        // Show verification UI
         lockedContent.style.display = 'none';
         this.querySelector('.verify-section').style.display = 'block';
         verifyInput.focus();
+        
+        // Start 3-second reset timer
+        resetTimer = setTimeout(() => {
+            if (this.classList.contains('locked')) {
+                resetToDefault();
+            }
+        }, 3000);
     }
 });
 
 // Verification function
 function verifyRedBeats() {
+    // Clear existing timer
+    clearTimeout(resetTimer);
+    
     if (verifyInput.value.trim().toUpperCase() === 'RED') {
         verifyMessage.textContent = '✓ Verified! Redirecting...';
         
-        // Keep space maintained with success message
+        // Update UI
         lockedContent.innerHTML = `
             <span class="main-text" style="color: #00ff00">✓ Access Granted</span>
             <small class="sub-text" style="color: #00ff00">Opening...</small>
         `;
         lockedContent.style.display = 'block';
-        
-        // Hide verification UI
         redBeatsLink.querySelector('.verify-section').style.display = 'none';
         
+        // Redirect
         setTimeout(() => {
             window.open('https://supersez.github.io/Ted/', '_blank', 'noopener,noreferrer');
         }, 2000);
     } else {
-        // Show error but keep original text hidden
         verifyMessage.textContent = '❌ Incorrect! Try again...';
-        lockedContent.style.display = 'none';
         verifyInput.value = '';
         verifyInput.focus();
+        
+        // Restart 3-second timer
+        resetTimer = setTimeout(() => {
+            resetToDefault();
+        }, 3000);
     }
 }
 
