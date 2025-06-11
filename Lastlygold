@@ -1,5 +1,13 @@
-    // Configuration: Add/remove repos here easily
+       // Configuration: Add/remove repos here easily
 const repositories = [
+  {
+    url: "https://github.com/atsuperman/G1/raw/refs/heads/main/",
+    songs: [
+  { file: "Naanamo.m4a", details: "🎬 Aayirathil Oruvan (1965) / 🎙️ T. M. Soundararajan, P. Susheela / 🎼 Viswanathan Ramamoorthy / 📝 Kannadasan" }
+  
+    ]
+  },
+
   {
     url: "https://github.com/atsuperman/play2/raw/main/",
     songs: [
@@ -10,14 +18,6 @@ const repositories = [
 { file: "Vallalai Paadum Vaayal.mp3", details: "🎬 Sivakavi (1943) / 🎙️ M. K. Thyagaraja Bhagavathar / 🎼 Papanasam Sivan" },
 { file: "Vasantha Ruthu.mp3", details: "🎬 Sivakavi (1943) / 🎙️ M. K. Thyagaraja Bhagavathar, S. Jayalakshmi / 🎼 Papanasam Sivan / 📝 Papanasam Sivan" },
  ]
-  },
-
-  {
-    url: "https://github.com/atsuperman/G1/raw/refs/heads/main/",
-    songs: [
-  { file: "Naanamo.m4a", details: "🎬 Aayirathil Oruvan (1965) / 🎙️ T. M. Soundararajan, P. Susheela / 🎼 Viswanathan Ramamoorthy / 📝 Kannadasan" }
-  
-    ]
   }
 ];
 
