@@ -3,6 +3,13 @@ const repositories = [
   {
     url: "https://github.com/atsuperman/G1/raw/refs/heads/main/",
     songs: [
+{ file: "Engalukkum Kaalam.m4a", details: "🎬 Pasamalar (1961) / 🎙️ T M Soundararajan, P Susheela / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
+{ file: "Malargalaipol.m4a", details: "🎬 Pasamalar (1961) / 🎙️ T M Soundararajan / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
+{ file: "Mayangugiraal Oru.m4a", details: "🎬 Pasamalar (1961) / 🎙️ P Susheela / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
+{ file: "Malarndhum Malaradha.m4a", details: "🎬 Pasamalar (1961) / 🎙️ T M Soundararajan, P Susheela / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
+{ file: "Paattondru Ketten.m4a", details: "🎬 Pasamalar (1961) / 🎙️ Jamuna Rani / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
+{ file: "Vaarai En Thozhi.m4a", details: "🎬 Pasamalar (1961) / 🎙️ L R Eswari / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
+{ file: "Yaar Yaar Yaar Aval.m4a", details: "🎬 Pasamalar (1961) / 🎙️ P B Sreenivas, P Susheela / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
 { file: "Aadaamal Aadukiren.m4a", details: "🎬 Aayirathil Oruvan (1965) / 🎙️ P Susheela / 🎼 Viswanathan – Ramamoorthy / 📝 Vaali" },
 { file: "Odum Megangalae.m4a", details: "🎬 Aayirathil Oruvan (1965) / 🎙️ T M Soundararajan / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
 { file: "Atho Andha.m4a", details: "🎬 Aayirathil Oruvan (1965) / 🎙️ T M Soundararajan / 🎼 Viswanathan–Ramamoorthy / 📝 Kannadasan" },
